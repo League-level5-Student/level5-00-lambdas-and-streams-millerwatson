@@ -10,12 +10,18 @@ public class StreamSearcher {
 	// use Streams to help us out.
 	public long containsCount(String[] strArr, String strToCount) {
 		//2. Convert the String array to a stream
-		
+		Stream<String> stringStream = Arrays.stream(strArr);
 		//3. Use the filter method with a lambda to extract all the String
 		//   elements that match the String parameter.
+		stringStream = stringStream.filter((String s) -> {
+			if(s.equals(strToCount)) {
+				return true;
+			}
+			return false;
+		});
 		
 		//4. Return the count of the filtered stream.
 		
-		return 0;
+		return stringStream.count();
 	}
 }
